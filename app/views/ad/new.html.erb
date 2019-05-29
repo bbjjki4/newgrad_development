@@ -1,9 +1,8 @@
 <%= form_for(@ad ,url: "/ad",html: {method: "post"}) do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :price %>
-  <%= f.text_area :text %>
-  <%= f.number_field :price %>
-  <%= f.number_field :advertiser_id %>
-  <%= f.file_field :image %>
+  <%= f.text_area :text,@ad.text %>
+  <%= f.number_field :price,@ad.price %>
+  <%= f.number_field :advertiser_id,@ad.advertiser_id %>
+  <%= f.file_field :image,@ad.image %>
   <%= f.submit("入稿") %>
 <% end %>

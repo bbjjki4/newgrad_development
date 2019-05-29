@@ -1,2 +1,9 @@
-<h1>Ad#edit</h1>
-<p>Find me in app/views/ad/edit.html.erb</p>
+<%= form_for(@ad ,url: "/ad/#{@ad.id}",html: {method: "patch"}) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_area :text,value: @ad.price %>
+  <%= f.number_field :price,value: @ad.price %>
+  <%= f.number_field :advertiser_id,value: @ad.advertiser_id %>
+  <%= f.file_field :image,value: @ad.image %>
+  <%= f.submit("入稿") %>
+
+<% end %>
