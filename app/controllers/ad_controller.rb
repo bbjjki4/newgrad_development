@@ -16,16 +16,22 @@ class AdController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
-    @ad.save
-    flash[:notice] = "Ad registered!"
-    redirect_to("/ad")
+    if @ad.save
+      flash[:notice] = "Ad registered!"
+      redirect_to("/ad")
+    else
+      render("/ad/new")
+    end
   end
 
   def update
     @ad = Ad.find(params[:id])
-    @ad.update_attributes(ad_params)
+    if @ad.update_attributes(ad_params)
     flash[:notice] = "Ad updated!"
     redirect_to("/ad")
+  else
+    render("/ad/edit")
+    end
   end
 
   def destroy

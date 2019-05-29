@@ -1,8 +1,18 @@
+ <% if @ad.errors.any? %>
+    <% @ad.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+    <% end %>
+
 <%= form_for(@ad ,url: "/ad/#{@ad.id}",html: {method: "patch"}) do |f| %>
   <%= f.label :name %>
+  <p>text</p>
   <%= f.text_area :text,value: @ad.price %>
+  <p>price</p>
   <%= f.number_field :price,value: @ad.price %>
+  <p>advertiser_id</p>
   <%= f.number_field :advertiser_id,value: @ad.advertiser_id %>
+  <p>image</p>
   <%= f.file_field :image,value: @ad.image %>
   <%= f.submit("入稿") %>
 

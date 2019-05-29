@@ -2,10 +2,13 @@
 	<div class="each_ad">
 		<% @ads.each do |ad| %>
 		<li>
-			<%= ad.id %>
+			<span>ad_id :<%= ad.id %></span>
 		</li>
 		<li>
-			<%= ad.text %>
+			<span>text :<%= ad.text %></span>
+		</li>
+		<li>
+			<span>price :<%= ad.price %></span>
 		</li>
 		<li>
 			<%= image_tag ad.image.to_s %>
