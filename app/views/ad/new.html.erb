@@ -1,11 +1,9 @@
-<%= form_tag("/advertisement/#{@ad.id}/create",{multipart: true}) do %>
-	<p>advertiser_id</p>
-	<input  name="advertise_id" value="<%= @ad.advertiser_id %>">
-	<p>text</p>
-	<input type="text" name="text" value="<%= @ad.text %>">
-	<p>image</p>
-	<input type="file" name="image" value="<%= @ad.image %>">
-	<p>price</p>
-	<input type="text" name="price" value="<% @ad.price %>">
-	<input type="submit" value="保存">
-	<% end %>
+<%= form_for(@ad ,url: "/ad",html: {method: "post"}) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :price %>
+  <%= f.text_area :text %>
+  <%= f.number_field :price %>
+  <%= f.number_field :advertiser_id %>
+  <%= f.file_field :image %>
+  <%= f.submit("入稿") %>
+<% end %>
