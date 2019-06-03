@@ -23,7 +23,7 @@ describe "Creation of  New Ad" do
   end
 
 
-  it "is Forms Valid?" do
+  it "is Forms valid?" do
     fill_in "ad_text", with: "TextForm"
     fill_in "ad_price", with: "1000"
     fill_in "ad_advertiser_id", with: "1"

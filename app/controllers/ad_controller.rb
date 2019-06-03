@@ -16,7 +16,7 @@ class AdController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
-    if @ad.save
+    if @ad.save #広告登録成功時
       flash[:notice] = "Ad registered!"
       redirect_to("/ad")
     else
@@ -42,7 +42,7 @@ class AdController < ApplicationController
 
   private
 
-  def ad_params
+  def ad_params #Adオブジェクト作成時にフォームから入力したパラメーターを渡す。
     params.require(:ad).permit(:price,:text,:advertiser_id,:image)
   end
 end
