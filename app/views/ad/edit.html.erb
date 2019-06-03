@@ -4,16 +4,17 @@
     <% end %>
     <% end %>
 
-<%= form_for(@ad ,url: "/ad/#{@ad.id}",html: {method: "patch"}) do |f| %>
-  <%= f.label :name %>
+<%= form_for(@ad ,url: "/ad/#{@ad.id}",html: {method: "patch",class: "form-group"}) do |f| %>
+<div class="form-group">
   <p>text</p>
-  <%= f.text_area :text,value: @ad.price %>
+  <%= f.text_area :text,value: @ad.price,class: "form-control" %>
   <p>price</p>
   <%= f.number_field :price,value: @ad.price %>
   <p>advertiser_id</p>
   <%= f.number_field :advertiser_id,value: @ad.advertiser_id %>
   <p>image</p>
-  <%= f.file_field :image,value: @ad.image %>
-  <%= f.submit("入稿") %>
+  <%= f.file_field :image,value: @ad.image,class: "form-control-file" %>
+  <%= f.submit class: "btn btn-primary",value: "入稿" %>
+</div>
 
 <% end %>
