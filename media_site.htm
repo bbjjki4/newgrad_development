@@ -15,7 +15,7 @@
         </div>
         <script>
             // ここで自分の自分のテストパラメーターを入れてください。
-            site_prefix = "http://localhost:8080/";
+            site_prefix = "http://localhost:3000/";
             adspot_id = 102;
             count = 2;
             window.onload = function(){
@@ -24,7 +24,6 @@
             function call_api(){
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", site_prefix + "view?adspot_id=" + adspot_id + "&count=" + count, true);
-                    
                 xhr.onload = function(){
                     displayAd = function(ad){
                         t = document.getElementById("display");
