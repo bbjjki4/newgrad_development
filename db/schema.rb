@@ -10,13 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_085221) do
+ActiveRecord::Schema.define(version: 2019_06_04_073026) do
 
   create_table "ads", force: :cascade do |t|
     t.integer "advertiser_id"
     t.string "image"
     t.string "price"
     t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "click"
+    t.integer "imp"
+    t.integer "cv"
+  end
+
+  create_table "conversions", force: :cascade do |t|
+    t.integer "ad_id"
+    t.integer "imp"
+    t.integer "click"
+    t.integer "cv"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cvs", force: :cascade do |t|
+    t.integer "ad_id"
+    t.integer "imp"
+    t.integer "click"
+    t.integer "cv"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
