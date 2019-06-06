@@ -1,27 +1,27 @@
 <div class="ads">
-	<div class="each_ad"> <%# 広告を一つ一つ表示 %>
-		<% @ads.each do |ad| %>
-		<li>
-			<span>ad_id :<%= ad.id %></span>
-		</li>
-		<li>
-			<span>text :<%= ad.text %></span>
-		</li>
-		<li>
-			<span>price :<%= ad.price %></span>
-		</li>
-		<li>
-			<%= image_tag ad.image.to_s %>
-		</li>
-		<div class="edit_button">
-			<%= link_to("Edit", "/ad/#{ad.id}/edit") %>
-		</div>
-		<div class="delete_button">
-			<%= link_to("Delete", "/ad/#{ad.id}" ,method: :delete) %>
-		</div>
-		<% end %>
-		<div>
-			<%= link_to("New", "/ad/new") %>
-		</div>
-	</div>
+  <div class="each_ad"> <%# 広告を一つ一つ表示 %>
+    <% @ads.each do |ad| %>
+      <li>
+        <span>ad_id :<%= ad.id %></span>
+      </li>
+      <li>
+        <span>text :<%= ad.text %></span>
+      </li>
+      <li>
+        <span>price :<%= ad.price %></span>
+      </li>
+      <li>
+        <%= image_tag ad.image.to_s %>
+      </li>
+      <div class="edit_button">
+        <%= link_to("Edit", "/ad/#{ad.id}/edit") %>
+      </div>
+      <div class="delete_button">
+        <%= link_to("Delete", "/ad/#{ad.id}" ,method: :delete) %>
+      </div>
+    <% end %>
+    <div>
+      <%= link_to("New", "/ad/new") %>
+    </div>
+  </div>
 </div>

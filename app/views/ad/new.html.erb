@@ -1,15 +1,13 @@
  <% if @ad.errors.any? %>
-    <% @ad.errors.full_messages.each do |error| %> <%# formが空白だった際にエラーを表示 %>
+  <% @ad.errors.full_messages.each do |error| %> <%# formが空白だった際にエラーを表示 %>
     <li><%= error %></li>
-    <% end %>
-    <% end %>
-
+  <% end %>
+<% end %>
 <%= form_for(@ad ,url: "/ad",html: {method: "post"}) do |f| %> <%# 入稿フォーム%>
-   <%= f.label :name %>
+  <%= f.label :name %>
   <%= f.text_area :text,value: @ad.price %>
   <%= f.number_field :price,value: @ad.price %>
   <%= f.number_field :advertiser_id,value: @ad.advertiser_id %>
   <%= f.file_field :image,value: @ad.image %>
   <%= f.submit("入稿") %>
-
 <% end %>
