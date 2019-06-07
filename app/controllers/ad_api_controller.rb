@@ -23,8 +23,9 @@ class AdApiController < ApplicationController
   end
 
   def click
-    if ad == Ad.find_by(id: params[:ad_id])
+     ad = Ad.find_by(id: params[:ad_id])
 
+     if ad
       if ad.click.nil?
         ad.click = 1
       else

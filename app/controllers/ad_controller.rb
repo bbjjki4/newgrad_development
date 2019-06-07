@@ -4,9 +4,6 @@ class AdController < ApplicationController
     @ads = Ad.all
   end
 
-  def show
-  end
-
   def edit
     @ad = Ad.find(params[:id])
   end
@@ -19,9 +16,9 @@ class AdController < ApplicationController
     @ad = Ad.new(ad_params)
     if @ad.save # 広告登録成功時
       flash[:notice] = 'Ad registered!'
-      redirect_to('/ad')
+      redirect_to(ad_index_path)
     else
-      render('/ad/new')
+      render("ad/new")
     end
   end
 
@@ -29,16 +26,16 @@ class AdController < ApplicationController
     @ad = Ad.find(params[:id])
     if @ad.update_attributes(ad_params)
       flash[:notice] = 'Ad updated!'
-      redirect_to('/ad')
+      redirect_to(ad_index_path)
     else
-      render('/ad/edit')
+      render("ad/edit")
     end
   end
 
   def destroy
     Ad.find(params[:id]).destroy
     flash[:notice] = 'Ad deleted!'
-    redirect_to('/ad')
+    redirect_to(ad_index_path)
   end
 
   private
