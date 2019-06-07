@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+###現段階で最新のCommitになります。
+* 広告入稿画面の開発およびそのRSpec
+* 広告配信用APIの開発
+* rubocop,htmlbeautifierによるコードの整形
+* 手作業でのコードの整形
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###まで終了しています。
