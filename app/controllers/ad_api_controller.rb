@@ -36,7 +36,8 @@ class AdApiController < ApplicationController
       ad.save
 
     else
-      ad = Ad.new(id: 500, adspot_id: 500)
+      ad = Ad.new(id: 500)
+
       if ad.click.nil?
         ad.click = 1
       else
