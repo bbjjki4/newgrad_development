@@ -6,11 +6,6 @@ describe 'Index Page Path' do
     visit '/ad'
     expect(current_path).to eq '/ad'
   end
-
-  it 'visit edit' do
-    visit '/ad/edit'
-    expect(current_path).to eq '/ad/edit'
-  end
 end
 
 describe 'Creation of  New Ad' do

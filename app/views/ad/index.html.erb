@@ -14,14 +14,14 @@
         <%= image_tag ad.image.to_s %>
       </li>
       <div class="edit_button">
-        <%= link_to("Edit", "/ad/#{ad.id}/edit") %>
+        <%= link_to("Edit", edit_ad_path(ad)) %>
       </div>
       <div class="delete_button">
         <%= link_to("Delete", "/ad/#{ad.id}" ,method: :delete) %>
       </div>
     <% end %>
     <div>
-      <%= link_to("New", "/ad/new") %>
+      <%= link_to("New", new_ad_path) %>
     </div>
   </div>
 </div>
