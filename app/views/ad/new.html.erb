@@ -1,8 +1,4 @@
- <% if @ad.errors.any? %>
-  <% @ad.errors.full_messages.each do |error| %> <%# formが空白だった際にエラーを表示 %>
-    <li><%= error %></li>
-  <% end %>
-<% end %>
+<%= render  partial: "errorlog" %>
 <%= form_for(@ad ,url: "/ad",html: {method: "post"}) do |f| %> <%# 入稿フォーム%>
   <%= f.label :name %>
   <%= f.text_area :text,value: @ad.price %>
