@@ -62,7 +62,7 @@ describe 'Buttons' do
       expect(current_path).to eq ad_index_path
     end
 
-    context "on Index Page" do
+    context 'on Index Page' do
       it 'edit clickable' do
         click_link('Edit')
       end
@@ -71,7 +71,5 @@ describe 'Buttons' do
         expect { click_link 'Delete' }.to change { Ad.count }.by(-1)
       end
     end
-
-
   end
 end
