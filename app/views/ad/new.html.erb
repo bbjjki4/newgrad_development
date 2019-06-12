@@ -1,5 +1,5 @@
 <%= render  partial: "errorlog" %>
-<%= form_for(@ad ,url: "/ad",html: {method: "post"}) do |f| %> <%# 入稿フォーム%>
+<%= form_for(@ad ,url: ad_index_path,html: {method: "post"}) do |f| %> <%# 入稿フォーム%>
   <%= f.label :name %>
   <%= f.text_area :text,value: @ad.price %>
   <%= f.number_field :price,value: @ad.price %>

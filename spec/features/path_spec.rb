@@ -3,14 +3,14 @@ require 'rails_helper'
 
 describe 'Index Page Path' do
   it 'visit index' do
-    visit '/ad'
-    expect(current_path).to eq '/ad'
+    visit ad_index_path
+    expect(current_path).to eq ad_index_path
   end
 end
 
 describe 'Creation of  New Ad' do
   before do
-    visit '/ad/new'
+    visit new_ad_path
   end
 
   it 'is Forms valid?' do
@@ -34,21 +34,20 @@ end
 
 describe 'Index Links' do
   before do
-    visit '/ad'
+    visit ad_index_path
   end
 
   it 'now on index?' do
-    expect(current_path).to eq '/ad'
+    expect(current_path).to eq ad_index_path
   end
 
   it 'new valid?' do
     click_link('New')
-    expect(current_path).to eq '/ad/new'
-    # expect(page).to have_link 'New'
+    expect(current_path).to eq new_ad_path
   end
 end
 
-describe 'Edit,Delete button' do
+describe 'Buttons' do
   context 'after new ad created' do
     before do
       visit 'ad/new'
@@ -60,18 +59,19 @@ describe 'Edit,Delete button' do
       click_button '入稿'
     end
     it 'should be on index page' do
-      expect(current_path).to eq '/ad'
+      expect(current_path).to eq ad_index_path
     end
 
-    it 'edit clickable' do
-      click_link('Edit')
+    context "on Index Page" do
+      it 'edit clickable' do
+        click_link('Edit')
+      end
+
+      it 'Delete clickable and its action workable' do
+        expect { click_link 'Delete' }.to change { Ad.count }.by(-1)
+      end
     end
 
-    it 'Delete clickable and its action workable' do
-      expect { click_link 'Delete' }.to change { Ad.count }.by(-1)
-    end
+
   end
 end
-
-
-
