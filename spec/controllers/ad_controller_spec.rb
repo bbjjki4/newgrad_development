@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe AdController, type: :controller do
   describe 'POST #create' do
-    it 'with all should plus Adrecord' do
+    it 'with all should plus Ad_record' do
       expect do
         post :create, params: { ad: { 'text' => 'Updated!',
                                       'price' => 1010101,
@@ -97,28 +97,28 @@ RSpec.describe AdController, type: :controller do
 
     context 'when something empty' do
       it 'without text should be rendered' do
-        patch :update, params: { ad: { 'text' => '' }, id: @ad.id }
+        patch :update, params: { ad: { 'text' =>nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
       it 'without price should be rendered' do
-        patch :update, params: { ad: { 'price' => '' }, id: @ad.id }
+        patch :update, params: { ad: { 'price' => nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
       it 'without advertiser_id should be rendered' do
-        patch :update, params: { ad: { 'advertiser_id' => '' }, id: @ad.id }
+        patch :update, params: { ad: { 'advertiser_id' => nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
       it 'without image should be rendered' do
-        patch :update, params: { ad: { 'image' => '' }, id: @ad.id }
+        patch :update, params: { ad: { 'image' => nil }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
       it 'without image should be rendered' do
         patch :update, params: { ad: {
-          'text' => '',
+          'text' => nil,
           'price' => nil,
           'advertiser_id' => nil,
           'image' => nil
