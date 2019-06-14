@@ -7,14 +7,14 @@ class AdApiController < ApplicationController
     ads=Ad.find(target_ids)
     ads.each do |ad|
 
-      if ad.imp ==nil
-        ad.imp = 1
-      else
-        ad.imp += 1
+      repo = Repo.find_by(ad_id: ad.id, adspot_id:  params[:adspot_id])
+      unless repo
+        repo = Repo.new(ad_id: ad.id,adspot_id:  params[:adspot_id])
       end
-      ad.save
 
-      puts ad.imp
+      repo.imp += 1
+      repo.save
+      p repo.imp
 
       array.push(
         { img_url: ad.image,
@@ -26,29 +26,17 @@ class AdApiController < ApplicationController
   end
 
   def click
-    if ad=Ad.find_by( id: params[:ad_id])
 
-      if ad.click ==nil
-        ad.click = 1
-      else
-        ad.click += 1
-      end
-      ad.save
+    if repo = Repo.find_by(ad_id:  params[:ad_id], adspot_id:  params[:adspot_id])
 
-      ad.price =  params[:price]
-      ad.save
-      puts 'ad saved!'
+      repo.click += 1
+      repo.totalcost +=  Ad.find( params[:ad_id]).price
+      repo.save
+
+      p repo.click
+      p repo.totalcost
 
     else
-      ad = Ad.new(id: 500,adspot_id: 500)
-      if ad.click ==nil
-        ad.click = 1
-      else
-        ad.click += 1
-      end
-      ad.save
-
-
       render status: 500, json: { status: 500, message: 'Ad was not existed! ' }
     end
   end
@@ -56,10 +44,8 @@ class AdApiController < ApplicationController
 
   private
   def count_p
-    
+
   end
 
 
 end
-
-
