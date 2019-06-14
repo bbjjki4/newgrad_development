@@ -2,7 +2,7 @@
 <%= form_for(@ad ,url: ad_path(@ad),html: {method: "patch",class: "form-group"}) do |f| %> <%#＃入稿フォーム %>
   <div class="form-group">
     <p>text</p>
-    <%= f.text_area :text,value: @ad.price,class: "form-control" %>
+    <%= f.text_area :text,value: @ad.text,class: "form-control" %>
     <p>price</p>
     <%= f.number_field :price,value: @ad.price %>
     <p>advertiser_id</p>
