@@ -18,7 +18,7 @@ class AdController < ApplicationController
       flash[:notice] = 'Ad registered!'
       redirect_to(ad_index_path)
     else
-      render('ad/new')
+      render(new_ad_path)
     end
   end
 
@@ -28,7 +28,7 @@ class AdController < ApplicationController
       flash[:notice] = 'Ad updated!'
       redirect_to(ad_index_path)
     else
-      render('ad/edit')
+      render(edit_ad_path)
     end
   end
 

@@ -50,7 +50,7 @@ end
 describe 'Buttons' do
   context 'after new ad created' do
     before do
-      visit 'ad/new'
+      visit new_ad_path
       fill_in 'ad_text', with: 'TextForm'
       fill_in 'ad_price', with: '1000'
       fill_in 'ad_advertiser_id', with: '1'
