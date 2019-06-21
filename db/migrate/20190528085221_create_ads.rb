@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class CreateAds < ActiveRecord::Migration[5.2] # Reportテーブルのtotalpriceにpriceを加算する為に使用
+class CreateAds < ActiveRecord::Migration[5.2] # Reportテーブルのtotalpriceにpriceを加算する為に使用しているのでここでも使っています
   def change
     create_table :ads do |t|
       t.integer :advertiser_id, null: false # 広告主ID

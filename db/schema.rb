@@ -12,7 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_06_14_041856) do
-  create_table 'ads', force: :cascade do |t|  # reportsテーブルのtotalpriceにpriceを加算する為に使用
+  create_table 'ads', force: :cascade do |t|  # reportsテーブルのtotalpriceにpriceを加算する為に使用しているのでここでも使っています
     t.integer 'advertiser_id', null: false
     t.string 'image', default: '', null: false
     t.integer 'price', null: false
