@@ -7,7 +7,7 @@ class CreateRepos < ActiveRecord::Migration[5.2]
       t.integer :click, null: false, default: 0
       t.integer :imp, null: false, default: 0
       t.integer :cv, null: false, default: 0
-      t.integer :price, null: false, default: 0
+      t.integer :totalprice, null: false, default: 0
       t.timestamps
     end
   end
