@@ -2,13 +2,13 @@
   <div class="each_ad"> <%# 広告を一つ一つ表示 %>
     <% @ads.each do |ad| %>
       <li>
-        <span>ad_id :<%= ad.id %></span>
+        <span>広告ID:<%= ad.id %></span>
       </li>
       <li>
-        <span>text :<%= ad.text %></span>
+        <span>広告文 :<%= ad.text %></span>
       </li>
       <li>
-        <span>price :<%= ad.price %></span>
+        <span>単価 :<%= ad.price %></span>
       </li>
       <li>
         <%= image_tag ad.image.to_s %>
