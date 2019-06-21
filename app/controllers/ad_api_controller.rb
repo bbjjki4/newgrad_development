@@ -22,7 +22,7 @@ class AdApiController < ApplicationController
         ad_id: ad.id
       )
     end
-    Report.import(reports)
+    Report.import reports, on_duplicate_key_update: [:imp]
     render json: array
   end
 
