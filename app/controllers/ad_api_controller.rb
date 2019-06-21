@@ -27,11 +27,13 @@ class AdApiController < ApplicationController
   end
 
   def click
-    report = Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id])
-
-    report.click += 1
-    report.totalcost += Ad.find(params[:ad_id]).price
+    if report = Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id])
+       report.click += 1
+    report.price += Ad.find(params[:ad_id]).price
     report.save
+     end
+
+
   end
 
 end
