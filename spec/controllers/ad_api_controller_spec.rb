@@ -3,7 +3,6 @@ require 'rails_helper'
 
 RSpec.describe AdApiController, type: :controller do
   befoere do
-
   end
   describe 'GET #view' do
     it 'returns http success' do
