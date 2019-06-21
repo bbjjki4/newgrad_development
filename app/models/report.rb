@@ -1,2 +1,2 @@
-class Repo < ApplicationRecord
+class Report < ApplicationRecord
 end
