@@ -1,51 +1,37 @@
 
+# frozen_string_literal: true
 class AdApiController < ApplicationController
   def view
-    array=[]
+    array = []
+    reports = []
 
-    target_ids = Ad.pluck(:id).sample( params[:count].to_i)
-    ads=Ad.find(target_ids)
+    target_ids = Ad.pluck(:id).sample(params[:count].to_i)
+    ads = Ad.find(target_ids)
     ads.each do |ad|
-
-      repo = Repo.find_by(ad_id: ad.id, adspot_id:  params[:adspot_id])
-      unless repo
-        repo = Repo.new(ad_id: ad.id,adspot_id:  params[:adspot_id])
+      report =  Report.find_by(ad_id: ad.id, adspot_id: params[:adspot_id])
+      unless report
+        report = Report.new(ad_id: ad.id, adspot_id: params[:adspot_id])
       end
 
-      repo.imp += 1
-      repo.save
-      p repo.imp
+      report.imp += 1
+      reports.push(report)
 
       array.push(
-        { img_url: ad.image,
-          body: ad.text,
-          ad_id: ad.id }
+        img_url: ad.image,
+        body: ad.text,
+        ad_id: ad.id
       )
     end
+    Report.import(reports)
     render json: array
   end
 
   def click
+    report = Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id])
 
-    if repo = Repo.find_by(ad_id:  params[:ad_id], adspot_id:  params[:adspot_id])
-
-      repo.click += 1
-      repo.totalcost +=  Ad.find( params[:ad_id]).price
-      repo.save
-
-      p repo.click
-      p repo.totalcost
-
-    else
-      render status: 500, json: { status: 500, message: 'Ad was not existed! ' }
-    end
+    report.click += 1
+    report.totalcost += Ad.find(params[:ad_id]).price
+    report.save
   end
-
-
-  private
-  def count_p
-
-  end
-
 
 end
