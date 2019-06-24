@@ -8,9 +8,9 @@ class AdApiController < ApplicationController
     target_ids = Ad.pluck(:id).sample(params[:count].to_i)
     ads = Ad.find(target_ids)
     ads.each do |ad|
-      report =  Report.find_by(ad_id: ad.id, adspot_id: params[:adspot_id])
+      report =  Report.find_by(ad_id: ad.id, adspot_id: params[:adspot_id],date: Date.today)
       unless report
-        report = Report.new(ad_id: ad.id, adspot_id: params[:adspot_id])
+        report = Report.new(ad_id: ad.id, adspot_id: params[:adspot_id], date: Date.today)
       end
 
       report.imp += 1
@@ -27,13 +27,14 @@ class AdApiController < ApplicationController
   end
 
   def click
-    if report = Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id])
-       report.click += 1
+    report =  Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id],date: Date.today)
+    unless report
+      report = Report.new(ad_id: params[:ad_id], adspot_id: params[:adspot_id], date: Date.today)
+    end
+    report.click += 1
     report.price += Ad.find(params[:ad_id]).price
     report.save
-     end
-
-
   end
 
 end
+
