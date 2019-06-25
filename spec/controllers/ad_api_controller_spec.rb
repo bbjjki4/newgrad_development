@@ -82,7 +82,7 @@ describe 'GET #click' do
     @ad =FactoryBot.create(:ad)
     get :view,params: {adspot_id: 1,count: 1}
     #     get :click,params: {ad_id: ad.id,adspot_id: 1}
-    # @report = Report.new(ad_id: params[:ad_id], adspot_id: params[:adspot_id], date: Date.today)
+    #@report = Report.new(ad_id: params[:ad_id], adspot_id: params[:adspot_id], date: Date.today)
 
   end
 
@@ -98,11 +98,10 @@ describe 'GET #click' do
       end
 
 
-      it "record 'imp' should be increased" do
-        get :view,params: {adspot_id: 1,count: 1}
-        expect { get :click,params: {ad_id: @ad.id,adspot_id: 1} }.to change(Report, :count).by(0)
-        expect(report.imp).to eq 1
-      end
+      # it "record 'click' should be increased" do
+      #   report = Report.find_by(ad_id: @ad.id, adspot_id: 1,date: Date.today)
+      #   expect{get :click,params: {ad_id: @ad.id,adspot_id: 1}}.to change(report.click).by(0)
+      # end
 
       # it "an ad shouldn't be recorded twice from the same adspot_id  on the same day" do
       #   get :view,params: {adspot_id: 100,count: 1}
