@@ -39,16 +39,39 @@ class AdController < ApplicationController
   end
 
   def report
-    @report = Report.all
-    @ad = Ad.find(1)
-    p "afleihfjoiwahfoiawhgfoiahfoiaho"
-    p @ad.class
+    # p "***********************"
+    # p  params[:date_max]
+    @reports = Report.select("
+      ad_id,
+      SUM(reports.imp) AS imp,
+      SUM(reports.click) AS click,
+      SUM(reports.cv) AS cv,
+      SUM(reports.price) AS price
+      ").group(:ad_id)
+
+    # if  params[:date_max] &&  params[:date_min]
+    #   p "YEAHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+    #   @reports = @reports.where(date: params[:date_min].to_date..params[:date_max].to_date)
+    # end
+
+    p "__________________"
+    p @reports
   end
 
   def report_period
-    @ads = Ad.all
-    @Report = Report.where(date: ( params[:date_min])..( params[:date_max]))
-  end
+
+    @reports = Report.select("
+      ad_id,
+      SUM(reports.imp) AS imp,
+      SUM(reports.click) AS click,
+      SUM(reports.cv) AS cv,
+      SUM(reports.price) AS price
+      ").where(date: params[:date_min].to_date..params[:date_max].to_date).group(:ad_id)
+        p "_________________________________"
+        p @reports
+    render('/ad/report')
+
+    end
 
   private
 
@@ -56,3 +79,4 @@ class AdController < ApplicationController
     params.require(:ad).permit(:price, :text, :image)
   end
 end
+
