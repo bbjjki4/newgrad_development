@@ -38,6 +38,18 @@ class AdController < ApplicationController
     redirect_to(ad_index_path)
   end
 
+  def report
+    @report = Report.all
+    @ad = Ad.find(1)
+    p "afleihfjoiwahfoiawhgfoiahfoiaho"
+    p @ad.class
+  end
+
+  def report_period
+    @ads = Ad.all
+    @Report = Report.where(date: ( params[:date_min])..( params[:date_max]))
+  end
+
   private
 
   def ad_params # Adオブジェクト作成時にフォームから入力したパラメーターを渡す。
