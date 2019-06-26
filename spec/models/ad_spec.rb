@@ -11,11 +11,6 @@ RSpec.describe Ad, type: :model do
     expect(@ad).not_to be_valid
   end
 
-  it 'without advertiser_id should be invalid' do
-    @ad.advertiser_id = nil
-    expect(@ad).not_to be_valid
-  end
-
   it 'without image should be invalid' do
     @ad.image = nil
     expect(@ad).not_to be_valid
