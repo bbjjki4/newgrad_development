@@ -1,0 +1,14 @@
+<%= form_tag(report_period_path, method: :get) do %>
+  <%= date_field_tag :date_min %>
+  <%= date_field_tag :date_max %>
+  <%= submit_tag "期間指定", class: "btn btn-primary" %>
+<% end %>
+<% @reports.each do |report| %>
+<div>
+	<p>広告ID: <%= report.ad_id %></p>
+	<p>Impression数: <%= report.imp %></p>
+	<p>Click数: <%= report.click %></p>
+	<p>総費用: <%= report.price %></p>
+</p>
+</div>
+<% end %>

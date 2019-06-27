@@ -4,6 +4,6 @@ class Ad < ApplicationRecord
   validates :text, presence: true
   validates :price, presence: true
   validates :image, presence: true
-  validates :advertiser_id, presence: true
+  has_many :reports
 
 end

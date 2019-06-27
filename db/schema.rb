@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2019_06_14_041856) do
 
   create_table "ads", force: :cascade do |t|
-    t.integer "advertiser_id", null: false
     t.string "image", default: "", null: false
     t.integer "price", null: false
     t.string "text", default: "", null: false

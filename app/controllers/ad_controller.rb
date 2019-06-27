@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'date'
 class AdController < ApplicationController
   def index
     @ads = Ad.all
@@ -38,9 +39,34 @@ class AdController < ApplicationController
     redirect_to(ad_index_path)
   end
 
+  def report
+    @reports = Report.select("
+      ad_id,
+      SUM(reports.imp) AS imp,
+      SUM(reports.click) AS click,
+      SUM(reports.cv) AS cv,
+      SUM(reports.price) AS price
+      ").group(:ad_id)
+  end
+
+  def report_period
+
+    @reports = Report.select("
+      ad_id,
+      SUM(reports.imp) AS imp,
+      SUM(reports.click) AS click,
+      SUM(reports.cv) AS cv,
+      SUM(reports.price) AS price
+      ").where(date: Date.parse(params[:date_min])..Date.parse(params[:date_max])).group(:ad_id)
+    p @reports
+    render('/ad/report')
+
+    end
+
   private
 
   def ad_params # Adオブジェクト作成時にフォームから入力したパラメーターを渡す。
-    params.require(:ad).permit(:price, :text, :advertiser_id, :image)
+    params.require(:ad).permit(:price, :text, :image)
   end
 end
+
