@@ -28,7 +28,7 @@ class AdController < ApplicationController
       flash[:notice] = '広告を更新しました！'
       redirect_to(ad_index_path)
     else
-      render(edit_ad_path)
+      render('edit')
     end
   end
 
