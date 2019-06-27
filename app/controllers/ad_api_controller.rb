@@ -17,7 +17,7 @@ class AdApiController < ApplicationController
       reports.push(report)
 
       array.push(
-        img_url: ad.image,
+        img_url: ad.image.url,
         body: ad.text,
         ad_id: ad.id
       )
