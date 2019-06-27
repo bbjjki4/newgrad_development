@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,26 +12,24 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_06_14_041856) do
-
-  create_table "ads", force: :cascade do |t|
-    t.integer "advertiser_id", null: false
-    t.string "image", default: "", null: false
-    t.integer "price", null: false
-    t.string "text", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'ads', force: :cascade do |t|
+    t.integer 'advertiser_id', null: false
+    t.string 'image', default: '', null: false
+    t.integer 'price', null: false
+    t.string 'text', default: '', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "reports", force: :cascade do |t|
-    t.integer "ad_id", null: false
-    t.integer "adspot_id", null: false
-    t.integer "click", default: 0, null: false
-    t.integer "imp", default: 0, null: false
-    t.integer "cv", default: 0, null: false
-    t.integer "price", default: 0, null: false
-    t.date "date", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'reports', force: :cascade do |t|
+    t.integer 'ad_id', null: false
+    t.integer 'adspot_id', null: false
+    t.integer 'click', default: 0, null: false
+    t.integer 'imp', default: 0, null: false
+    t.integer 'cv', default: 0, null: false
+    t.integer 'price', default: 0, null: false
+    t.date 'date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
