@@ -1,7 +1,7 @@
 <%= render  partial: "errorlog" %>
 <%= form_for(@ad ,url: ad_index_path,html: {method: "post",class: "form-group"}) do |f| %> <%#＃入稿フォーム %>
   <div class="form-group h3">
-    <p>広告文</p>
+    <p>テキスト</p>
     <%= f.text_area :text,value: @ad.text,class: "form-control" %>
     <p>単価</p>
     <%= f.number_field :price,value: @ad.price %>

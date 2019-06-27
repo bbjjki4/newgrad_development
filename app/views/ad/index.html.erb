@@ -11,7 +11,7 @@
     <tr>
       <th scope="col" class="h2">広告ID</th>
       <th scope="col" class="h2">広告主ID</th>
-      <th scope="col" class="h2">広告文</th>
+      <th scope="col" class="h2">テキスト</th>
       <th scope="col" class="h2">単価</th>
       <th scope="col" class="h2">イメージ画像</th>
       <th scope="col" class="h2">操作</th>
@@ -19,7 +19,7 @@
   </thead>
   <tbody>
     <tr>
-     <% @ads.each do |ad| %><%# 広告を一つ一つ表示 %>
+     <% @ads.each do |ad| %>
       <td class="h3 align-middle"><%= ad.id %></td>
       <td class="h3 align-middle"><%= ad.advertiser_id %></td>
       <td class="h3 align-middle"><%= ad.text %></td>
