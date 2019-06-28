@@ -7,7 +7,7 @@ class AdApiController < ApplicationController
     target_ids = Ad.pluck(:id).sample(params[:count].to_i)
     ads = Ad.find(target_ids)
     ads.each do |ad|
-      report =  Report.find_by(ad_id: ad.id, adspot_id: params[:adspot_id],date: Date.today)
+      report =  Report.find_by(ad_id: ad.id, adspot_id: params[:adspot_id], date: Date.today)
       unless report
         report = Report.new(ad_id: ad.id, adspot_id: params[:adspot_id], date: Date.today)
       end
@@ -36,4 +36,3 @@ class AdApiController < ApplicationController
   end
 
 end
-

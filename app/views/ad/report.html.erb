@@ -1,0 +1,33 @@
+<%= form_tag(report_period_path, method: :get) do %>
+  <%= date_field_tag :date_min %>
+  <%= date_field_tag :date_max %>
+  <%= submit_tag "期間指定", class: "btn btn-primary" %>
+<% end %>
+<div class="ads">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="h2">広告ID</th>
+        <th scope="col" class="h2">Impression数</th>
+        <th scope="col" class="h2">Click数</th>
+        <th scope="col" class="h2">総費用(円)</th>
+        <th scope="col" class="h2">CTR</th>
+        <th scope="col" class="h2">CPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @reports.each do |report| %>
+          <td class="h3 align-middle"><%= report.ad_id %></td>
+          <td class="h3 align-middle"><%= report.imp %></td>
+          <td class="h3 align-middle"><%= report.click %></td>
+          <td class="h3 align-middle"><%= report.price %></td>
+          <td class="h3 align-middle">
+            <%= (report.click.to_f / report.imp.to_f).round(3) %></td>
+          <td class="h3 align-middle">
+            <%= (report.price / (1000 / report.imp)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

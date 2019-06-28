@@ -16,7 +16,6 @@ describe 'Creation of  New Ad' do
   it 'is Forms valid?' do
     fill_in 'ad_text', with: 'TextForm'
     fill_in 'ad_price', with: '1000'
-    fill_in 'ad_advertiser_id', with: '1'
     fill_in 'ad_text', with: 'TextForm'
     page.attach_file('ad_image', '/Users/hashimototakuma/Downloads/PNG_transparency_demonstration_1.png')
   end
@@ -24,7 +23,6 @@ describe 'Creation of  New Ad' do
   it 'is create action valid?' do
     fill_in 'ad_text', with: 'TextForm'
     fill_in 'ad_price', with: '1000'
-    fill_in 'ad_advertiser_id', with: '1'
     fill_in 'ad_text', with: 'TextForm'
     page.attach_file('ad_image', '/Users/hashimototakuma/Downloads/PNG_transparency_demonstration_1.png')
 
@@ -53,7 +51,6 @@ describe 'Buttons' do
       visit new_ad_path
       fill_in 'ad_text', with: 'TextForm'
       fill_in 'ad_price', with: '1000'
-      fill_in 'ad_advertiser_id', with: '1'
       fill_in 'ad_text', with: 'TextForm'
       page.attach_file('ad_image', '/Users/hashimototakuma/Downloads/PNG_transparency_demonstration_1.png')
       click_button '入稿'
