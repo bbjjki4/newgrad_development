@@ -8,7 +8,7 @@ class CreateRepos < ActiveRecord::Migration[5.2]
       t.integer :imp, null: false, default: 0
       t.integer :cv, null: false, default: 0
       t.integer :price, null: false, default: 0
-      t.date :date,null: false,unique: true
+      t.date :date, null: false, unique: true
       t.timestamps
     end
   end

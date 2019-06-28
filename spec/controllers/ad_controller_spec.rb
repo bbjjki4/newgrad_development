@@ -45,7 +45,7 @@ RSpec.describe AdController, type: :controller do
           'text' => nil,
           'price' => nil,
           'image' => nil
-        },id: @ad.id }
+        }, id: @ad.id }
         expect(response).to render_template :edit
       end
 
@@ -69,7 +69,7 @@ RSpec.describe AdController, type: :controller do
           'text' => 'Updated!',
           'price' => 1010101,
           'image' => Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixture/image.jpg'))
-        },id: @ad.id }
+        }, id: @ad.id }
         expect(response).to redirect_to(ad_index_path)
       end
     end
@@ -95,7 +95,7 @@ RSpec.describe AdController, type: :controller do
           'text' => nil,
           'price' => nil,
           'image' => nil
-        },id: @ad.id }
+        }, id: @ad.id }
         expect(response).to render_template :edit
       end
     end
