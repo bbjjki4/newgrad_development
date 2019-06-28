@@ -57,7 +57,6 @@ class AdController < ApplicationController
       SUM(reports.cv) AS cv,
       SUM(reports.price) AS price
       ").where(date: Date.parse(params[:date_min])..Date.parse(params[:date_max])).group(:ad_id)
-    p @reports
     render('/ad/report')
     end
 
