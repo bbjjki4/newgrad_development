@@ -50,7 +50,6 @@ class AdController < ApplicationController
   end
 
   def report_period
-
     @reports = Report.select("
       ad_id,
       SUM(reports.imp) AS imp,
@@ -60,7 +59,6 @@ class AdController < ApplicationController
       ").where(date: Date.parse(params[:date_min])..Date.parse(params[:date_max])).group(:ad_id)
     p @reports
     render('/ad/report')
-
     end
 
   private
@@ -69,4 +67,3 @@ class AdController < ApplicationController
     params.require(:ad).permit(:price, :text, :image)
   end
 end
-
