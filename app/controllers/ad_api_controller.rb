@@ -1,7 +1,6 @@
-
 # frozen_string_literal: true
 class AdApiController < ApplicationController
-  def view_make_report
+  def get_ads
     array = []
     reports = []
 
@@ -26,7 +25,7 @@ class AdApiController < ApplicationController
     render json: array
   end
 
-  def click_make_report
+  def update_clicks
     report =  Report.find_by(ad_id: params[:ad_id], adspot_id: params[:adspot_id],date: Date.today)
     unless report
       report = Report.new(ad_id: params[:ad_id], adspot_id: params[:adspot_id], date: Date.today)

@@ -6,42 +6,42 @@ RSpec.describe AdApiController, type: :controller do
     @ad1 = FactoryBot.create(:ad)
   end
 
-  describe 'GET #view_make_report' do
+  describe 'GET #get_ads' do
     it 'returns http success with valid params' do
-      get :view_make_report, params: { adspot_id: 1, count: 1 }
+      get :get_ads, params: { adspot_id: 1, count: 1 }
       expect(response).to have_http_status(:success)
     end
 
     describe 'Report' do
       it 'an ad should be recorded' do
-        expect { get :view_make_report, params: { adspot_id: 1, count: 1 } }.to change(Report, :count).by(1)
+        expect { get :get_ads, params: { adspot_id: 1, count: 1 } }.to change(Report, :count).by(1)
       end
 
       it "record 'imp' should be increased" do
-        get :view_make_report, params: { adspot_id: 1, count: 1 }
+        get :get_ads, params: { adspot_id: 1, count: 1 }
         report = Report.find_by(ad_id: @ad1.id, adspot_id: 1, date: Date.today)
         expect(report.imp).to eq 1
       end
 
       it "an ad shouldn't be recorded twice from the same adspot_id  on the same day" do
-        get :view_make_report, params: { adspot_id: 100, count: 1 }
-        expect { get :view_make_report, params: { adspot_id: 100, count: 1 } }.to change(Report, :count).by(0)
+        get :get_ads, params: { adspot_id: 100, count: 1 }
+        expect { get :get_ads, params: { adspot_id: 100, count: 1 } }.to change(Report, :count).by(0)
       end
 
       it 'an ad should be recorded from other adspots' do
-        get :view_make_report, params: { adspot_id: 100, count: 1 }
-        expect { get :view_make_report, params: { adspot_id: 101, count: 1 } }.to change(Report, :count).from(1).to(2)
+        get :get_ads, params: { adspot_id: 100, count: 1 }
+        expect { get :get_ads, params: { adspot_id: 101, count: 1 } }.to change(Report, :count).from(1).to(2)
       end
 
       it 'ads should be recorded at the same time' do
         ad2 = FactoryBot.create(:ad)
-        expect { get :view_make_report, params: { adspot_id: 101, count: 2 } }.to change(Report, :count).from(0).to(2)
+        expect { get :get_ads, params: { adspot_id: 101, count: 2 } }.to change(Report, :count).from(0).to(2)
       end
 
       it 'an ad should be recorded on the other day' do
-        get :view_make_report, params: { adspot_id: 101, count: 1 }
+        get :get_ads, params: { adspot_id: 101, count: 1 }
         travel 1.day do
-          expect { get :view_make_report, params: { adspot_id: 101, count: 1 } }.to change(Report, :count).from(1).to(2)
+          expect { get :get_ads, params: { adspot_id: 101, count: 1 } }.to change(Report, :count).from(1).to(2)
         end
       end
 
@@ -49,7 +49,7 @@ RSpec.describe AdApiController, type: :controller do
         it 'all ads should be visible ' do
           @ad2 = FactoryBot.create(:ad)
           @ad3 = FactoryBot.create(:ad)
-          get :view_make_report, params: { adspot_id: 1, count: 3 }
+          get :get_ads, params: { adspot_id: 1, count: 3 }
           jsons = JSON.parse(response.body)
 
           ad1_ispresent = false
@@ -73,20 +73,20 @@ RSpec.describe AdApiController, type: :controller do
     end
   end
 
-  describe 'GET #click_make_report' do
+  describe 'GET #update_clicks' do
     before do
       @ad = FactoryBot.create(:ad)
-      get :view_make_report, params: { adspot_id: 1, count: 1 }
+      get :get_ads, params: { adspot_id: 1, count: 1 }
     end
 
     it 'returns http success' do
-      get :click_make_report, params: { ad_id: @ad.id, adspot_id: 1 }
+      get :update_clicks, params: { ad_id: @ad.id, adspot_id: 1 }
       expect(response).to have_http_status(:success)
     end
 
     describe 'Report' do
       it 'an ad should be recorded ' do
-        expect { get :click_make_report, params: { ad_id: @ad.id, adspot_id: 1 } }.to change(Report, :count).by(0)
+        expect { get :update_clicks, params: { ad_id: @ad.id, adspot_id: 1 } }.to change(Report, :count).by(0)
       end
     end
   end
