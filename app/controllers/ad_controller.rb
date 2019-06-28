@@ -39,7 +39,7 @@ class AdController < ApplicationController
     redirect_to(ad_index_path)
   end
 
-  def report
+  def report #report.htmlに全レポートを出力
     @reports = Report.select("
       ad_id,
       SUM(reports.imp) AS imp,
@@ -49,7 +49,7 @@ class AdController < ApplicationController
       ").group(:ad_id)
   end
 
-  def report_period
+  def report_period #report.htmlに一定期間のレポートを出力
     @reports = Report.select("
       ad_id,
       SUM(reports.imp) AS imp,
