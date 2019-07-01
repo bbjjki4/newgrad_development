@@ -63,6 +63,6 @@ class AdController < ApplicationController
   private
 
   def ad_params # Adオブジェクト作成時にフォームから入力したパラメーターを渡す。
-    params.require(:ad).permit(:price, :text, :image)
+    params.require(:ad).permit(:advertiser_id,:price, :text, :image)
   end
 end
