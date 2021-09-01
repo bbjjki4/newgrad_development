@@ -9,7 +9,7 @@ jobs:
     - name: Notify Issue Build
       uses: 8398a7/action-slack@v3.8.0
       status: custom
-      custom_payload:
+      custom_payload: |
         {
           text: "Custom Field Check",
           attachments: [{
