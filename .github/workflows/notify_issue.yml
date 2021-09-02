@@ -15,9 +15,8 @@ jobs:
           {
             attachments: [{
               title: "New issue comming",
-              text: `${{ github.event.issue.title }}`,
               color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-              text: `${{ github.event.issue.html_url }}`,
+              text: `${{ github.event.issue.title }}\n${{ github.event.issue.html_url }}`,
             }]
           }
       env:
