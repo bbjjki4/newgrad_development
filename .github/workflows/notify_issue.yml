@@ -14,11 +14,13 @@ jobs:
         custom_payload: |
           {
             attachments: [{
+              title: 'new issue comming!'
               color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-              text: `aaa`,
+              text: `${{ github.event.issue.url }}`,
             }]
           }
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       if: always()
+
