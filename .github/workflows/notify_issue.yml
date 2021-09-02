@@ -14,6 +14,7 @@ jobs:
         custom_payload: |
           {
             attachments: [{
+              title: "New issue comming",
               color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
               text: `${{ github.event.issue.html_url }}`,
             }]
