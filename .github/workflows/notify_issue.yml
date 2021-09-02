@@ -8,34 +8,16 @@ jobs:
     steps:
     - name: Notify Issue Build
       uses: 8398a7/action-slack@v3.8.0
-      status: custom
-      custom_payload: 
-         {
-          text: "Custom Field Check",
-          attachments: [{
-            fallback: 'fallback',
-            color: 'good',
-            title: 'CI Result',
-            text: 'Succeeded',
-            fields: [{
-              title: 'lower case',
-              value: 'LOWER CASE CHECK'.toLowerCase(),
-              short: true
-            },
-            {
-              title: 'reverse',
-              value: 'gnirts esrever'.split('').reverse().join(''),
-              short: true
-            },
-            {
-              title: 'long title1',
-              value: 'long value1',
-              short: false
-            }],
-            actions: [{
-            }]
-          }]
-        }
+      with:
+    status: custom
+    fields: workflow,job,commit,repo,ref,author,took
+    custom_payload:
+      {
+        attachments: [{
+          color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+          text: `aaa`,
+        }]
+      }
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
