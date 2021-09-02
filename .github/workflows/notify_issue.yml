@@ -9,15 +9,15 @@ jobs:
     - name: Notify Issue Build
       uses: 8398a7/action-slack@v3.8.0
       with:
-    status: custom
-    fields: workflow,job,commit,repo,ref,author,took
-    custom_payload:
-      {
-        attachments: [{
-          color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-          text: `aaa`,
-        }]
-      }
+        status: custom
+        fields: workflow,job,commit,repo,ref,author,took
+        custom_payload: |
+          {
+            attachments: [{
+              color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+              text: `aaa`,
+            }]
+          }
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
